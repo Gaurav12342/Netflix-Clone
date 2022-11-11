@@ -1,19 +1,18 @@
 import { FC } from 'react'
 import Header from 'component/Layout/Header'
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import { Grid } from '@mui/material';
 import Banner from './Banner';
 import TrendingView from './TrendingView';
 
 const Dashboard: FC = () => {
     return (
-        <div>
+        <Grid className='my-5 mx-5'>
             <Header />
-            <Container>
+            <Grid>
                 {/* <Banner /> */}
                 <TrendingView />
-            </Container >
-        </div >
+            </Grid >
+        </Grid>
     )
 }
 

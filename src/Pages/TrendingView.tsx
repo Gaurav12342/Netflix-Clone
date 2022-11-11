@@ -5,47 +5,28 @@ import "slick-carousel/slick/slick-theme.css";
 
 const TrendingView: FC = () => {
     const settings = {
-        centerMode: true,
-        infinite: true,
+        centerMode: false,
+        infinite: false,
         centerPadding: "60px",
-        slidesToShow: 3,
-        speed: 500
+        slidesToShow: 5,
+        speed: 500,
+        dots: true,
+        arrows: true
     };
 
     return (
         <div className='bg-lime-400 p-10'>
             <h2>Center Mode</h2>
             <Slider {...settings}>
-                <div className='bg-emerald-500 w-10'>
-                    <div className='bg-slate-400 w-72 h-40'>
-                        <h3 className="text-center">1</h3>
-                    </div>
-                </div>
-                <div className='bg-emerald-500 w-10'>
-                    <div className='bg-slate-400 w-72 h-40'>
-                        <h3 className="text-center">2</h3>
-                    </div>
-                </div>
-                <div className='bg-emerald-500 w-10'>
-                    <div className='bg-slate-400 w-72 h-40'>
-                        <h3 className="text-center">3</h3>
-                    </div>
-                </div>
-                <div className='bg-emerald-500 w-10'>
-                    <div className='bg-slate-400 w-72 h-40'>
-                        <h3 className="text-center">4</h3>
-                    </div>
-                </div>
-                <div className='bg-emerald-500 w-10'>
-                    <div className='bg-slate-400 w-72 h-40'>
-                        <h3 className="text-center">5</h3>
-                    </div>
-                </div>
-                <div className='bg-emerald-500 w-10'>
-                    <div className='bg-slate-400 w-72 h-40'>
-                        <h3 className="text-center">6</h3>
-                    </div>
-                </div>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((dd) => {
+                    return (
+                        <div className='bg-emerald-500 w-8'>
+                            <div className='bg-slate-400 w-56 h-40'>
+                                <h3 className="text-center">{dd}</h3>
+                            </div>
+                        </div>
+                    )
+                })}
             </Slider>
         </div>
     )
