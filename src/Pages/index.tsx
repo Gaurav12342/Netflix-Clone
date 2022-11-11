@@ -12,6 +12,7 @@ const Dashboard: FC = () => {
                 <Grid>
                     {/* <Banner /> */}
                     <TrendingView />
+                    <TrendingView />
                 </Grid >
             </Grid>
         </Grid>
