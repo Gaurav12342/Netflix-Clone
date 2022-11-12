@@ -5,6 +5,7 @@ import Banner from './Banner';
 import TrendingView from './TrendingView';
 
 const Dashboard: FC = () => {
+    console.log("Process =>", process.env.REACT_APP_USER_KEY);
     return (
         <Grid className="bg-stone-800">
             <Grid className='my-5 mx-5'>
