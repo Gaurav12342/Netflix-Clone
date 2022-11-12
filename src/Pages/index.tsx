@@ -1,24 +1,22 @@
 import { FC } from 'react'
 import Header from 'component/Layout/Header'
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import { Grid } from '@mui/material';
+import Banner from './Banner';
+import TrendingView from './TrendingView';
+
 const Dashboard: FC = () => {
+    console.log("Process =>", process.env.REACT_APP_USER_KEY);
     return (
-        <div>
-            <Header />
-            <Container>
-                <Box sx={{ my: 2 }}>
-                    {[...new Array(20)]
-                        .map(
-                            () => `Cras mattis consectetur purus sit amet fermentum.
-  Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-  Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-  Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-                        )
-                        .join('\n')}
-                </Box>
-            </Container>
-        </div>
+        <Grid className="bg-stone-800">
+            <Grid className='my-5 mx-5'>
+                <Header />
+                <Grid>
+                    {/* <Banner /> */}
+                    <TrendingView />
+                    <TrendingView />
+                </Grid >
+            </Grid>
+        </Grid>
     )
 }
 
