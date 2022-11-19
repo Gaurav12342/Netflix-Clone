@@ -5,6 +5,8 @@ import Banner from './Banner';
 import TrendingView from './TrendingView';
 import NetflixOrigionals from './NetflixOrigionals';
 import TopRated from './TopRated';
+import ComediesMovies from './ComediesMovies';
+import ActionMovies from './ActionMovies';
 
 const Dashboard: FC = () => {
     return (
@@ -16,6 +18,8 @@ const Dashboard: FC = () => {
                     <TrendingView />
                     <NetflixOrigionals />
                     <TopRated />
+                    <ActionMovies />
+                    <ComediesMovies />
                 </Grid >
             </Grid>
         </Grid>
