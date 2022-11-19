@@ -23,6 +23,7 @@ const Carousel: FC<IProps> = (props) => {
         arrows: true,
     };
 
+    // https://image.tmdb.org/t/p/w342/1X4h40fcB4WWUmIBK0auT4zRBAV.jpg
     return (
         <div className='px-6 pb-8'>
             <Grid className="pb-5">
@@ -34,8 +35,8 @@ const Carousel: FC<IProps> = (props) => {
                 {data?.map((dd: any) => {
                     return (
                         <div className='w-8'>
-                            <div className='bg-slate-400 w-56 h-72'>
-                                <h3 className="text-center">{dd}</h3>
+                            <div className='bg-slate-400 w-56 h-73'>
+                                <img src={'https://image.tmdb.org/t/p/w342/1X4h40fcB4WWUmIBK0auT4zRBAV.jpg'} alt="movie-image" />
                             </div>
                         </div>
                     )
