@@ -7,6 +7,8 @@ import NetflixOrigionals from './NetflixOrigionals';
 import TopRated from './TopRated';
 import ComediesMovies from './ComediesMovies';
 import ActionMovies from './ActionMovies';
+import HorrorMovies from './HorrorMovies';
+import RomanceMovie from './RomanceMovie';
 
 const Dashboard: FC = () => {
     return (
@@ -20,6 +22,8 @@ const Dashboard: FC = () => {
                     <TopRated />
                     <ActionMovies />
                     <ComediesMovies />
+                    <HorrorMovies />
+                    <RomanceMovie />
                 </Grid >
             </Grid>
         </Grid>
