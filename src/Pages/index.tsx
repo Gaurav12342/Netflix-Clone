@@ -3,6 +3,8 @@ import Header from 'component/Layout/Header'
 import { Grid } from '@mui/material';
 import Banner from './Banner';
 import TrendingView from './TrendingView';
+import NetflixOrigionals from './NetflixOrigionals';
+import TopRated from './TopRated';
 
 const Dashboard: FC = () => {
     return (
@@ -12,7 +14,8 @@ const Dashboard: FC = () => {
                 <Grid>
                     {/* <Banner /> */}
                     <TrendingView />
-                    <TrendingView />
+                    <NetflixOrigionals />
+                    <TopRated />
                 </Grid >
             </Grid>
         </Grid>
