@@ -5,12 +5,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Grid, Dialog, DialogContent, Paper, PaperProps } from '@mui/material';
 import '../../App.css';
-
-// import Dialog from '@mui/material/Dialog';
-// import DialogContent from '@mui/material/DialogContent';
-// import Paper, { PaperProps } from '@mui/material/Paper';
 import Draggable from 'react-draggable';
 import ReactPlayer from 'react-player'
+import axios from 'utils/AxiosInterceptor';
 
 interface IProps {
     data?: any,
@@ -32,13 +29,22 @@ const PaperComponent = (props: PaperProps) => {
 const Carousel: FC<IProps> = (props) => {
     const { data, name } = props;
     const [open, setOpen] = useState(false);
+    const [videoUrl, setVideoUrl] = useState("");
 
-    const handleClickOpen = () => {
-        setOpen(true);
+    const handleDialog = (value: any) => {
+        setOpen(false);
+        axios.get(`tv/${value?.id}/videos`).then((data: any) => {
+            if (data?.status === 200) {
+                const url = `https://www.youtube.com/watch?v=${data?.data?.results[0]?.key}`;
+                setVideoUrl(url);
+                setOpen(true);
+            }
+        }).catch()
     };
 
     const handleClose = () => {
         setOpen(false);
+        setVideoUrl("");
     };
 
 
@@ -65,7 +71,7 @@ const Carousel: FC<IProps> = (props) => {
                     {data?.results?.map((dd: any) => {
                         return (
                             <div className='w-8'>
-                                <div className='bg-slate-400 w-56 h-73 cursor-pointer' onClick={handleClickOpen}>
+                                <div className='bg-slate-400 w-56 h-73 cursor-pointer' onClick={() => handleDialog(dd)}>
                                     <img src={`https://image.tmdb.org/t/p/w342/${dd?.poster_path}`} alt="movie-image" />
                                 </div>
                             </div>
@@ -83,7 +89,7 @@ const Carousel: FC<IProps> = (props) => {
                 aria-labelledby="draggable-dialog-title"
             >
                 <DialogContent>
-                    <ReactPlayer width={"840px"} playing={true} controls={true} url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+                    <ReactPlayer muted={true} width={"840px"} playing={true} controls={true} url={videoUrl} />
                 </DialogContent>
             </Dialog>
         </>
