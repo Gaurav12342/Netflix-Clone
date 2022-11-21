@@ -3,17 +3,14 @@ import { FC, useState } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Grid } from '@mui/material';
+import { Grid, Dialog, DialogContent, Paper, PaperProps } from '@mui/material';
 import '../../App.css';
 
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Paper, { PaperProps } from '@mui/material/Paper';
+// import Dialog from '@mui/material/Dialog';
+// import DialogContent from '@mui/material/DialogContent';
+// import Paper, { PaperProps } from '@mui/material/Paper';
 import Draggable from 'react-draggable';
+import ReactPlayer from 'react-player'
 
 interface IProps {
     data?: any,
@@ -81,23 +78,13 @@ const Carousel: FC<IProps> = (props) => {
                 open={open}
                 onClose={handleClose}
                 PaperComponent={PaperComponent}
+                fullWidth={true}
+                maxWidth={'md'}
                 aria-labelledby="draggable-dialog-title"
             >
-                <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-                    Subscribe
-                </DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        To subscribe to this website, please enter your email address here. We
-                        will send updates occasionally.
-                    </DialogContentText>
+                    <ReactPlayer width={"840px"} playing={true} controls={true} url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
                 </DialogContent>
-                <DialogActions>
-                    <Button autoFocus onClick={handleClose}>
-                        Cancel
-                    </Button>
-                    <Button onClick={handleClose}>Subscribe</Button>
-                </DialogActions>
             </Dialog>
         </>
     )
