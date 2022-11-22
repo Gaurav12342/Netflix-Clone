@@ -1,19 +1,9 @@
 import { useState } from 'react';
-import { AppBar, Toolbar, Typography, CssBaseline, useScrollTrigger, Slide } from '@mui/material';
-
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import { MenuItem, Tooltip, Avatar, Container, Menu, IconButton, AppBar, Toolbar, Typography, CssBaseline, useScrollTrigger, Slide, Box } from '@mui/material';
 import AdbIcon from '@mui/icons-material/Adb';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 interface Props {
     /**
@@ -39,7 +29,7 @@ const HideOnScroll = (props: Props) => {
 
 const Header = (props: any) => {
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-    const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+    const [_, setAnchorElUser] = useState<null | HTMLElement>(null);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -52,9 +42,6 @@ const Header = (props: any) => {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
 
     return (
         <>

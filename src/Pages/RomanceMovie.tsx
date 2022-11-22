@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from 'react'
 import Carousel from 'component/Carousel';
 import axios from 'utils/AxiosInterceptor';
 
-const RomanceMovie = () => {
+const RomanceMovie: FC = () => {
     const [movieData, setMoviewData] = useState({});
 
     useEffect(() => {
