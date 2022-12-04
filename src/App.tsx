@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Dashboard from './pages/index';
+import Dashboard from 'Pages';
 
 export const App: FC = () => {
   return (

@@ -5,8 +5,8 @@ import Banner from './Banner';
 import TrendingView from './TrendingView';
 import NetflixOrigionals from './NetflixOrigionals';
 import TopRated from './TopRated';
-import ComediesMovies from './ComediesMovies';
 import ActionMovies from './ActionMovies';
+import ComediesMovies from './ComediesMovies';
 import HorrorMovies from './HorrorMovies';
 import RomanceMovie from './RomanceMovie';
 
