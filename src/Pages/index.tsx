@@ -16,7 +16,7 @@ const Dashboard: FC = () => {
             <Grid className='my-5 mx-5'>
                 <Header />
                 <Grid>
-                    {/* <Banner /> */}
+                    <Banner />
                     <TrendingView />
                     <NetflixOrigionals />
                     <TopRated />
