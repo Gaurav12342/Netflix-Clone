@@ -67,11 +67,11 @@ const Banner: FC = () => {
           alt="Freedom Blog"
         />
         <div className="absolute top-20 left-10 flex flex-col items-start space-y-8">
-          <label className="font-bold text-5xl text-white">
+          <label className="font-bold text-5xl text-white w-2/5 text-start">
             {bannerData?.name}
           </label>
 
-          <p className="font-bold text-xl text-white text-start">
+          <p className="font-bold text-xl text-white text-start w-2/5">
             {bannerData?.overview}
           </p>
 
