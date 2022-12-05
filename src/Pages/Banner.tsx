@@ -63,7 +63,7 @@ const Banner: FC = () => {
       <div className="text-center text-yellow-600 mb-10 relative">
         <img
           className="relative w-1/1"
-          src={`https://image.tmdb.org/t/p/original/${bannerData?.poster_path}`}
+          src={`https://image.tmdb.org/t/p/original/${bannerData?.backdrop_path}`}
           alt="Freedom Blog"
         />
         <div className="absolute top-20 left-10 flex flex-col items-start space-y-8">
