@@ -5,7 +5,7 @@ const Banner: FC = () => {
   const [bannerData, setBannerData] = useState<any>({});
 
   console.log("bannerData", bannerData);
-  
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,20 +30,16 @@ const Banner: FC = () => {
       <div className="text-center text-yellow-600 mb-10 relative">
         <img
           className="relative w-1/1"
-          src={
-            "https://image.tmdb.org/t/p/original/6ESvUtiCv3XqJRTU9d32I4R0Ckq.jpg"
-          }
+          src={`https://image.tmdb.org/t/p/original/${bannerData?.poster_path}`}
           alt="Freedom Blog"
         />
         <div className="absolute top-20 left-10 flex flex-col items-start space-y-8">
           <label className="font-bold text-5xl text-white">
-            {"Dhanna pani"}
+            {bannerData?.name}
           </label>
 
           <p className="font-bold text-xl text-white text-start">
-            When a young boy vanishes, a small town uncovers a mystery involving
-            secret experiments, terrifying supernatural forces, and one strange
-            little girl.
+            {bannerData?.overview}
           </p>
 
           <div className="flex">
@@ -56,7 +52,7 @@ const Banner: FC = () => {
           </div>
 
           <p className="uppercase font-bold text-xl text-white text-start">
-            RATING: 8.6/10
+            {`RATING: ${bannerData?.vote_average}/10`}
           </p>
         </div>
       </div>
