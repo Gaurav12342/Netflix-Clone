@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from 'react'
 import Carousel from 'component/Carousel';
 import axios from 'utils/AxiosInterceptor';
+import comman from 'Resources/comman.json';
 
 const ComediesMovies: FC = () => {
     const [movieData, setMoviewData] = useState({});
@@ -16,7 +17,7 @@ const ComediesMovies: FC = () => {
     }
     return (
         <>
-            <Carousel name={"COMEDIES"} data={movieData} />
+            <Carousel name={comman?.COMEDIES} data={movieData} />
         </>
     )
 }

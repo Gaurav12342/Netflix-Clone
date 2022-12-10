@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from 'react'
 import Carousel from 'component/Carousel';
 import axios from 'utils/AxiosInterceptor';
+import comman from 'Resources/comman.json';
 
 const NetflixOrigionals: FC = () => {
     const [movieData, setMoviewData] = useState({});
@@ -16,7 +17,7 @@ const NetflixOrigionals: FC = () => {
     }
     return (
         <>
-            <Carousel name={"NETFLIX ORIGINALS"} data={movieData} />
+            <Carousel name={comman?.NETFLIX_ORIGINALS} data={movieData} />
         </>
     )
 }

@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from 'react'
 import Carousel from 'component/Carousel';
 import axios from 'utils/AxiosInterceptor';
+import comman from 'Resources/comman.json';
 
 const TopRated: FC = () => {
     const [movieData, setMoviewData] = useState({});
@@ -16,7 +17,7 @@ const TopRated: FC = () => {
     }
     return (
         <>
-            <Carousel name={"TOP RATED"} data={movieData} />
+            <Carousel name={comman?.TOP_RATED} data={movieData} />
         </>
     )
 }
