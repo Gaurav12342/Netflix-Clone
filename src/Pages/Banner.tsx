@@ -1,8 +1,10 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, forwardRef } from "react";
 import { Dialog, DialogContent, Paper, PaperProps } from "@mui/material";
 import Draggable from "react-draggable";
 import ReactPlayer from "react-player";
 import axios from "utils/AxiosInterceptor";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 
 const PaperComponent = (props: PaperProps) => {
   return (
@@ -15,10 +17,18 @@ const PaperComponent = (props: PaperProps) => {
   );
 };
 
+const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 const Banner: FC = () => {
   const [bannerData, setBannerData] = useState<any>({});
   const [open, setOpen] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
+  const [isAlert, setIsAlert] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -45,9 +55,13 @@ const Banner: FC = () => {
       .get(`tv/${value}/videos`)
       .then((data: any) => {
         if (data?.status === 200) {
-          const url = `https://www.youtube.com/watch?v=${data?.data?.results[0]?.key}`;
-          setVideoUrl(url);
-          setOpen(true);
+          if (!data?.data?.results.length) {
+            setIsAlert(true);
+          } else {
+            const url = `https://www.youtube.com/watch?v=${data?.data?.results[0]?.key}`;
+            setVideoUrl(url);
+            setOpen(true);
+          }
         }
       })
       .catch();
@@ -56,6 +70,17 @@ const Banner: FC = () => {
   const handleClose = () => {
     setOpen(false);
     setVideoUrl("");
+  };
+
+  const handleSnackbarClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setIsAlert(false);
   };
 
   return (
@@ -111,6 +136,21 @@ const Banner: FC = () => {
           />
         </DialogContent>
       </Dialog>
+
+      <Snackbar
+        open={isAlert}
+        autoHideDuration={2000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          The video not found.!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, forwardRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,6 +7,8 @@ import "../../App.css";
 import Draggable from "react-draggable";
 import ReactPlayer from "react-player";
 import axios from "utils/AxiosInterceptor";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 
 interface IData {
   page?: number;
@@ -19,10 +21,7 @@ interface IProps {
   name?: string;
 }
 
-interface IMovie{
-    
-}
-
+interface IMovie {}
 
 const PaperComponent = (props: PaperProps) => {
   return (
@@ -35,23 +34,33 @@ const PaperComponent = (props: PaperProps) => {
   );
 };
 
+const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 const Carousel: FC<IProps> = (props) => {
   const { data, name } = props;
   const [open, setOpen] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
+  const [isAlert, setIsAlert] = useState(false);
 
   const handleDialog = (value: any) => {
-    console.log("Values", value);
-
+    const isTv = value?.media_type ? value?.media_type : "movie";
     setOpen(false);
     axios
-      .get(`movie/${value?.id}/videos`)
-      // .get(`tv/${value?.id}/videos`)
+      .get(`${isTv}/${value?.id}/videos`)
       .then((data: any) => {
         if (data?.status === 200) {
-          const url = `https://www.youtube.com/watch?v=${data?.data?.results[0]?.key}`;
-          setVideoUrl(url);
-          setOpen(true);
+          if (!data?.data?.results.length) {
+            setIsAlert(true);
+          } else {
+            const url = `https://www.youtube.com/watch?v=${data?.data?.results[0]?.key}`;
+            setVideoUrl(url);
+            setOpen(true);
+          }
         }
       })
       .catch();
@@ -71,6 +80,17 @@ const Carousel: FC<IProps> = (props) => {
     dots: true,
     arrows: true,
     focusOnSelect: true,
+  };
+
+  const handleSnackbarClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setIsAlert(false);
   };
 
   return (
@@ -118,6 +138,21 @@ const Carousel: FC<IProps> = (props) => {
           />
         </DialogContent>
       </Dialog>
+
+      <Snackbar
+        open={isAlert}
+        autoHideDuration={2000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          The video not found.!
+        </Alert>
+      </Snackbar>
     </>
   );
 };
