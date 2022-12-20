@@ -13,7 +13,9 @@ import {
   useScrollTrigger,
   Slide,
   Box,
+  Grid,
 } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -40,7 +42,6 @@ const HideOnScroll = (props: Props) => {
 const Header: FC = (props) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [_, setAnchorElUser] = useState<null | HTMLElement>(null);
-  
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -58,78 +59,27 @@ const Header: FC = (props) => {
       <HideOnScroll {...props}>
         <AppBar sx={{ backgroundColor: "#272727" }}>
           <Container maxWidth="xl">
-            <Toolbar>
-              <img
-                className="w-24"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png"
-                alt=""
-              />
-              <img
-                className="w-24 ml-3 h-10"
-                src="	https://reactflix.anthonyperuso.me/tmdb-logo.svg"
-                alt=""
-              />
-
-              <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleOpenNavMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorElNav}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "left",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "left",
-                  }}
-                  open={Boolean(anchorElNav)}
-                  onClose={handleCloseNavMenu}
-                  sx={{
-                    display: { xs: "block", md: "none" },
-                  }}
-                >
-                  {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </Box>
-              <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-              <Typography
-                variant="h5"
-                noWrap
-                component="a"
-                href=""
-                sx={{
-                  mr: 2,
-                  display: { xs: "flex", md: "none" },
-                  flexGrow: 1,
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  color: "inherit",
-                  textDecoration: "none",
-                }}
-              >
-                LOGO
-              </Typography>
-              <Box
-                sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
-              ></Box>
-
-              <Box sx={{ flexGrow: 0 }}>
+            <Toolbar
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "end",
+              }}
+            >
+              <Grid display={"flex"}>
+                <img
+                  className="w-24"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png"
+                  alt=""
+                />
+                <img
+                  className="w-24 ml-3 h-10"
+                  src="	https://reactflix.anthonyperuso.me/tmdb-logo.svg"
+                  alt=""
+                />
+              </Grid>
+              <Grid>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
@@ -138,7 +88,7 @@ const Header: FC = (props) => {
                     />
                   </IconButton>
                 </Tooltip>
-              </Box>
+              </Grid>
             </Toolbar>
           </Container>
         </AppBar>
