@@ -3,9 +3,9 @@ import Dashboard from 'Pages';
 
 export const App: FC = () => {
   return (
-    <>
+    <div test-id="root">
       <Dashboard />
-    </>
+    </div>
   )
 }
 

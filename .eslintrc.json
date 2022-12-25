@@ -23,6 +23,7 @@
         "react/react-in-jsx-scope": "off",
         "use-isnan": "warn",
         "no-unused-vars": "error",
-        "no-empty": "error"
+        "no-empty": "error",
+        "react/no-unknown-property": ["warn", { "ignore": ["css"] }]
     }
 }

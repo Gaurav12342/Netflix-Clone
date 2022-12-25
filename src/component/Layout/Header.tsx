@@ -1,25 +1,16 @@
 import { FC, useState } from "react";
 import {
-  MenuItem,
   Tooltip,
   Avatar,
   Container,
-  Menu,
   IconButton,
   AppBar,
   Toolbar,
-  Typography,
   CssBaseline,
   useScrollTrigger,
   Slide,
-  Box,
   Grid,
 } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import AdbIcon from "@mui/icons-material/Adb";
-import MenuIcon from "@mui/icons-material/Menu";
-
-const pages = ["Products", "Pricing", "Blog"];
 
 interface Props {
   window?: () => Window;
@@ -40,17 +31,10 @@ const HideOnScroll = (props: Props) => {
 };
 
 const Header: FC = (props) => {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [_, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
+
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
   };
 
   return (
