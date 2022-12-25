@@ -17,13 +17,13 @@ const Dashboard: FC = () => {
                 <Header />
                 <Grid>
                     <Banner />
-                    <TrendingView />
+                    {/* <TrendingView />
                     <NetflixOrigionals />
                     <TopRated />
                     <ActionMovies />
                     <ComediesMovies />
                     <HorrorMovies />
-                    <RomanceMovie />
+                    <RomanceMovie /> */}
                 </Grid >
             </Grid>
         </Grid>

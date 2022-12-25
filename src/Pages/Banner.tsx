@@ -1,5 +1,12 @@
-import { FC, useState, useEffect, forwardRef } from "react";
-import { Dialog, DialogContent, Paper, PaperProps } from "@mui/material";
+import { FC, useState, useEffect, forwardRef, useMemo } from "react";
+import {
+  Dialog,
+  DialogContent,
+  Paper,
+  PaperProps,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import Draggable from "react-draggable";
 import ReactPlayer from "react-player";
 import axios from "utils/AxiosInterceptor";
@@ -30,9 +37,18 @@ const Banner: FC = () => {
   const [videoUrl, setVideoUrl] = useState("");
   const [isAlert, setIsAlert] = useState(false);
 
+  const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+
   useEffect(() => {
     fetchData();
   }, []);
+
+  const bannerImage = useMemo(() => {
+    return smDown
+      ? `https://image.tmdb.org/t/p/original/${bannerData?.poster_path}`
+      : `https://image.tmdb.org/t/p/original/${bannerData?.backdrop_path}`;
+  }, [smDown, bannerData]);
 
   const fetchData = () => {
     axios
@@ -86,19 +102,11 @@ const Banner: FC = () => {
   return (
     <div>
       <div className="text-center text-yellow-600 mb-10 relative">
-        <img
-          className="relative w-1/1"
-          src={`https://image.tmdb.org/t/p/original/${bannerData?.backdrop_path}`}
-          alt="Freedom Blog"
-        />
+        <img className="relative w-1/1" src={bannerImage} alt="Freedom Blog" />
         <div className="absolute top-20 left-10 flex flex-col items-start space-y-8">
-          <label className="font-bold text-5xl text-white w-2/5 text-start">
+          <label className="font-bold text-5xl md:text-4xl text-white w-2/5 text-start md:w-[40rem]">
             {bannerData?.name}
           </label>
-
-          <p className="font-bold text-xl text-white text-start w-2/5">
-            {bannerData?.overview}
-          </p>
 
           <div className="flex">
             <button
@@ -111,6 +119,10 @@ const Banner: FC = () => {
               Add To My List
             </button>
           </div>
+
+          <p className="font-bold text-xl md:text-lg text-white text-start w-2/5 md:w-[40rem]">
+            {bannerData?.overview}
+          </p>
 
           <p className="uppercase font-bold text-xl text-white text-start">
             {`RATING: ${bannerData?.vote_average}/10`}
