@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import {
   Tooltip,
   Avatar,
@@ -31,25 +31,22 @@ const HideOnScroll = (props: Props) => {
 };
 
 const Header: FC = (props) => {
-  const [_, setAnchorElUser] = useState<null | HTMLElement>(null);
-
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
   return (
     <>
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar sx={{ backgroundColor: "#272727" }}>
-          <Container maxWidth="xl">
+          <Container
+            maxWidth="xl"
+          >
             <Toolbar
               sx={{
                 width: "100%",
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "end",
-              }}
+                alignItems: "center",
+                padding: "0px",
+                }}
             >
               <Grid display={"flex"}>
                 <img
@@ -65,7 +62,7 @@ const Header: FC = (props) => {
               </Grid>
               <Grid>
                 <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <IconButton sx={{ p: 0 }}>
                     <Avatar
                       alt="Gaurav Sali"
                       src="/static/images/avatar/2.jpg"
