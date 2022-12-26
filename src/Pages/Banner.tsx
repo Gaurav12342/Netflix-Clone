@@ -102,13 +102,17 @@ const Banner: FC = () => {
   return (
     <div>
       <div className="text-center text-yellow-600 mb-10 relative">
-        <img className="relative w-1/1 after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-r from-slate-100 to-blue-500" src={bannerImage} alt="Freedom Blog" />
-        <div className="absolute top-20 left-10 flex flex-col items-start space-y-8">
-          <label className="font-bold text-5xl md:text-4xl text-white w-2/5 text-start md:w-[40rem]">
+        <img
+          className="relative w-1/1 after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-r from-slate-100 to-blue-500"
+          src={bannerImage}
+          alt="Freedom Blog"
+        />
+        <div className="absolute top-20 xs:top-5 left-10 xs:left-5 right-0 xs:right-5 flex flex-col items-start space-y-8">
+          <label className="font-bold text-5xl xs:text-[40px] md:text-4xl text-white w-2/5 xs:w-[20rem] md:w-[40rem] text-start">
             {bannerData?.name}
           </label>
 
-          <div className="flex">
+          <div className="flex mt-0 xs:mt-[10px]">
             <button
               className="block text-sm text-white mr-4 py-2 px-4 rounded-md border-0 font-semibold bg-slate-400 uppercase"
               onClick={() => handleDialog(bannerData?.id)}
@@ -120,7 +124,7 @@ const Banner: FC = () => {
             </button>
           </div>
 
-          <p className="font-bold text-xl md:text-lg text-white text-start w-2/5 md:w-[40rem]">
+          <p className="font-bold text-xl xs:text-[16px] md:text-lg text-white text-start w-2/5 xs:w-[20rem] md:w-[40rem]">
             {bannerData?.overview}
           </p>
 
