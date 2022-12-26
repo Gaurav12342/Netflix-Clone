@@ -3,7 +3,7 @@ import Dashboard from 'Pages';
 
 export const App: FC = () => {
   return (
-    <div test-id="root">
+    <div data-testid="root">
       <Dashboard />
     </div>
   )
