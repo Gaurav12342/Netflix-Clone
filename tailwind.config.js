@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        xl: { max: "1440px" },
+        xl: { max: "1400px" },
         // => @media (max-width: 1440px) { ... }
 
         lg: { max: "1200px" },

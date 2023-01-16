@@ -21,8 +21,6 @@ interface IProps {
   name?: string;
 }
 
-interface IMovie {}
-
 const PaperComponent = (props: PaperProps) => {
   return (
     <Draggable
@@ -80,6 +78,45 @@ const Carousel: FC<IProps> = (props) => {
     dots: true,
     arrows: true,
     focusOnSelect: true,
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 375,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
+    ],
   };
 
   const handleSnackbarClose = (
@@ -104,9 +141,9 @@ const Carousel: FC<IProps> = (props) => {
         <Slider {...settings}>
           {data?.results?.map((dd: any) => {
             return (
-              <div className="w-8">
+              <div key={dd?.id}>
                 <div
-                  className="bg-slate-400 w-56 h-73 cursor-pointer"
+                  className="bg-slate-400 w-56 sm:w-72 md:w-64 2xl:w-72 cursor-pointer"
                   onClick={() => handleDialog(dd)}
                 >
                   <img
